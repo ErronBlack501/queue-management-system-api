@@ -12,6 +12,12 @@ class Counter extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function serviceQueue()
+    {
+        return $this->belongsTo(ServiceQueue::class);
+    }
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);

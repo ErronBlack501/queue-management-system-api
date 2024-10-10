@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('service_name');
             $table->string('service_description');
-            $table->string('service_name');
             $table->time('estimated_duration', precision: 0)->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('queue_name');
-            $table->int('ticket_count')->default(0);
+            $table->integer('ticket_count')->default(0);
             $table->enum('queue_status', ['open', 'closed', 'suspended']);
             $table->timestamps();
         });

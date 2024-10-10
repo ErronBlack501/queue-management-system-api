@@ -13,4 +13,9 @@ class ServiceQueue extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function counters()
+    {
+        return $this->hasMany(Counter::class);
+    }
 }

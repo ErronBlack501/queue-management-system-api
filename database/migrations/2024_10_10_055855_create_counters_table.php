@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('counter_name');
             $table->enum('counter_status', ['available', 'busy', 'on_break'])->default('available');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('service_queue_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('service_queue_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('service_queue_id')->references('id')->on('service_queues')->cascadeOnDelete();
             $table->timestamps();
         });
     }
