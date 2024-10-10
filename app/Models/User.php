@@ -33,6 +33,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function counters()
+    {
+        return $this->hasMany(Counter::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
