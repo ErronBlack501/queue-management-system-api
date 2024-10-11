@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ServiceQueue>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
  */
-class ServiceQueueFactory extends Factory
+class ServiceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class ServiceQueueFactory extends Factory
     public function definition(): array
     {
         return [
-            'service_name' => fake()->name(),
-            'service_description' => fake()->description(),
-            'queue_name' => fake()->name(),
+            //
         ];
     }
 }

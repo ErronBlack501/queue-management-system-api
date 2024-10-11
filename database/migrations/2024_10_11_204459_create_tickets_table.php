@@ -13,12 +13,6 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket_number');
-            $table->enum('ticket_status', ['waiting', 'in_progress', 'completed', 'canceled']);
-            $table->unsignedBigInteger('counter_id');
-            $table->unsignedBigInteger('service_queue_id');
-            $table->foreign('counter_id')->references('id')->on('counters')->cascadeOnDelete();
-            $table->foreign('service_queue_id')->references('id')->on('service_queues')->cascadeOnDelete();
             $table->timestamps();
         });
     }
