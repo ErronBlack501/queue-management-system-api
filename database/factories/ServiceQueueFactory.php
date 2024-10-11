@@ -17,7 +17,9 @@ class ServiceQueueFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'service_name' => fake()->name(),
+            'service_description' => fake()->description(),
+            'queue_name' => fake()->name(),
         ];
     }
 }

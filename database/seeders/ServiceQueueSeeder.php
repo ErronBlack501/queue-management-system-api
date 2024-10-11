@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Counter;
+use App\Models\ServiceQueue;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ServiceQueueSeeder extends Seeder
 {
@@ -12,6 +14,13 @@ class ServiceQueueSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        ServiceQueue::factory()->has(Counter::factory()->count(1))->create([
+            'service_name' => 'Facturation',
+            'queue_name' => 'Facturation-queue',
+        ]);
+        ServiceQueue::factory()->has(Counter::factory()->count(1))->create([
+            'service_name' => 'Retrait',
+            'queue_name' => 'Retrait-queue',
+        ]);
     }
 }

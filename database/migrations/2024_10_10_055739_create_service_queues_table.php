@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('queue_name');
             $table->integer('ticket_count')->default(0);
-            $table->enum('queue_status', ['open', 'closed', 'suspended']);
+            $table->enum('queue_status', ['open', 'closed', 'suspended'])->default('open');
             $table->timestamps();
         });
     }
