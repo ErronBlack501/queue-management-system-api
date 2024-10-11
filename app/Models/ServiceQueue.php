@@ -9,6 +9,15 @@ class ServiceQueue extends Model
 {
     use HasFactory;
 
+    protected  $fillable = [
+        'service_name',
+        'service_description',
+        'estimated_duration',
+        'is_active',
+        'queue_name',
+        'queue_status'
+    ];
+
     public function Tickets()
     {
         return $this->hasMany(Ticket::class);

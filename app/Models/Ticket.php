@@ -9,6 +9,13 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ticket_number',
+        'ticket_status',
+        'counter_id',
+        'service_queue_id',
+    ];
+
     public function counter()
     {
         return $this->belongsTo(Counter::class);
