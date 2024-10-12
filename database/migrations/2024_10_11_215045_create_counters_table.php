@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->id();
-            $table->string('counter_number');
+            $table->string('counter_number')->unique();
             $table->enum('counter_status', ['open', 'closed', 'suspended'])->default('open');
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->cascadeOnDelete();

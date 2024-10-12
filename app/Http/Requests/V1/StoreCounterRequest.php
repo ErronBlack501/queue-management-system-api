@@ -11,7 +11,7 @@ class StoreCounterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class StoreCounterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'counterNumber' => 'required|string',
+            'counterStatus' => 'required|in:open,closed,suspended',
+            'serviceId' => 'required|exists:services,id',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'counter_number' => $this->counterNumber,
+            'counter_status' => $this->counterStatus,
+            'service_id' => $this->serviceId,
+        ]);
     }
 }

@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Counter extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
+
+    protected $fillable = [
+        'counter_number',
+        'counter_status',
+        'service_id'
+    ];
 
     public function service()
     {

@@ -11,7 +11,7 @@ class UpdateCounterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,48 @@ class UpdateCounterRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $method = $this->method();
+
+        if ($method === "PUT") {
+            return [
+                'counterNumber' => 'required|alpha_num',
+                'counterStatus' => 'required|in:open,closed,suspended',
+                'serviceId' => 'required|exists:services,id',
+            ];
+        } else {
+            return [
+                'counterNumber' => 'sometimes|required|alpha_num',
+                'counterStatus' => 'sometimes|required|in:open,closed,suspended',
+                'serviceId' => 'sometimes|required|exists:services,id',
+            ];
+        }
+    }
+    protected function prepareForValidation()
+    {
+        $input = [
+            'counter_number' => $this->counterNumber,
+            'service_description' => $this->counterStatus,
+            'service_id' => $this->serviceId,
         ];
+
+        if ($this->isThereAnyNullValue($input)) {
+            $filtratedInput = array_filter(
+                $input,
+                function ($value) {
+                    return $value !== null;
+                }
+            );
+            if (count($filtratedInput) > 0) $this->merge($filtratedInput);
+        } else {
+            $this->merge($input);
+        }
+    }
+
+    private function isThereAnyNullValue(array $array): bool
+    {
+        foreach ($array as $value) {
+            if (is_null($value)) return true;
+        }
+        return false;
     }
 }

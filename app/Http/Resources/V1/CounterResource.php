@@ -14,6 +14,12 @@ class CounterResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'counterNumber' => $this->counter_number,
+            'counterStatus' => $this->counter_status,
+            'serviceId' => $this->service_id,
+            'serviceName' => $this->service->service_name,
+        ];
     }
 }
