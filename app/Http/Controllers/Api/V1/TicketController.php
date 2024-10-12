@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Requests\StoreTicketHistoryRequest;
-use App\Http\Requests\UpdateTicketHistoryRequest;
-use App\Models\TicketHistory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTicketRequest;
+use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Ticket;
 
-class TicketHistoryController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class TicketHistoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTicketHistoryRequest $request)
+    public function store(StoreTicketRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class TicketHistoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TicketHistory $ticketHistory)
+    public function show(Ticket $ticket)
     {
         //
     }
@@ -43,7 +44,7 @@ class TicketHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TicketHistory $ticketHistory)
+    public function edit(Ticket $ticket)
     {
         //
     }
@@ -51,7 +52,7 @@ class TicketHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTicketHistoryRequest $request, TicketHistory $ticketHistory)
+    public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
         //
     }
@@ -59,7 +60,7 @@ class TicketHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TicketHistory $ticketHistory)
+    public function destroy(Ticket $ticket)
     {
         //
     }
