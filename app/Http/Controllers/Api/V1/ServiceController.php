@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Service;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\V1\StoreServiceRequest;
 use App\Http\Resources\V1\ServiceResource;
-use App\Http\Requests\UpdateServiceRequest;
+use App\Http\Requests\V1\UpdateServiceRequest;
 use App\Http\Resources\V1\ServiceCollection;
+
 
 class ServiceController extends Controller
 {
@@ -16,7 +17,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return new ServiceCollection(Service::paginate());
+        return new ServiceCollection(Service::filter()->paginate());
     }
 
     /**
@@ -40,6 +41,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
+
         return new ServiceResource($service);
     }
 

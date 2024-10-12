@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Counter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCounterRequest;
-use App\Http\Requests\UpdateCounterRequest;
+use App\Http\Requests\V1\StoreCounterRequest;
+use App\Http\Requests\V1\UpdateCounterRequest;
 
 class CounterController extends Controller
 {

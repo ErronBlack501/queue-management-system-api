@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTicketHistoryRequest;
-use App\Http\Requests\UpdateTicketHistoryRequest;
+use App\Http\Requests\V1\StoreTicketHistoryRequest;
+use App\Http\Requests\V1\UpdateTicketHistoryRequest;
 use App\Models\TicketHistory;
 
 class TicketHistoryController extends Controller
