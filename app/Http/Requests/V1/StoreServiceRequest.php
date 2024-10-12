@@ -22,7 +22,18 @@ class StoreServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'serviceName' => 'required',
+            'serviceDescription' => 'required',
+            'isActive' => 'required|boolean'
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'service_name' => $this->serviceName,
+            'service_description' => $this->serviceDescription,
+            'is_active' => $this->isActive
+        ]);
     }
 }

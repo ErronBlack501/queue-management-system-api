@@ -11,6 +11,13 @@ class Service extends Model
 {
     use HasFactory, Filterable;
 
+    protected $fillable = [
+        'service_name',
+        'service_description',
+        'estimated_duration',
+        'is_active',
+    ];
+
     public function counters()
     {
         return $this->hasMany(Counter::class);

@@ -11,7 +11,7 @@ class UpdateServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,49 @@ class UpdateServiceRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $method = $this->method();
+
+        if ($method === "PUT") {
+            return [
+                'serviceName' => 'required',
+                'serviceDescription' => 'required',
+                'isActive' => 'required|boolean'
+            ];
+        } else {
+            return [
+                'serviceName' => 'sometimes|required',
+                'serviceDescription' => 'sometimes|required',
+                'isActive' => 'sometimes|required|boolean'
+            ];
+        }
+    }
+
+    protected function prepareForValidation()
+    {
+        $input = [
+            'service_name' => $this->serviceName,
+            'service_description' => $this->serviceDescription,
+            'is_active' => $this->isActive
         ];
+
+        if ($this->isThereAnyNullValue($input)) {
+            $filtratedInput = array_filter(
+                $input,
+                function ($value) {
+                    return $value !== null;
+                }
+            );
+            if (count($filtratedInput) > 0) $this->merge($filtratedInput);
+        } else {
+            $this->merge($input);
+        }
+    }
+
+    private function isThereAnyNullValue(array $array): bool
+    {
+        foreach ($array as $value) {
+            if (is_null($value)) return true;
+        }
+        return false;
     }
 }

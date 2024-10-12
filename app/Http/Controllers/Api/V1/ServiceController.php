@@ -20,20 +20,20 @@ class ServiceController extends Controller
         return new ServiceCollection(Service::filter()->paginate());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  */
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreServiceRequest $request)
     {
-        //
+        return new ServiceResource(Service::create($request->all()));
     }
 
     /**
@@ -45,20 +45,20 @@ class ServiceController extends Controller
         return new ServiceResource($service);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Service $service)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(Service $service)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $service->update($request->all());
     }
 
     /**
@@ -66,6 +66,6 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        Service::destroy($service->id);
     }
 }
